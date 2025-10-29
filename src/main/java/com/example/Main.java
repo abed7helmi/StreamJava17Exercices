@@ -8,14 +8,44 @@ import java.util.stream.IntStream;
 public class Main {
     public static void main(String[] args) {
         //Write a Java program to calculate the average of a list of integers using streams.
-        //averageStream();
+        averageStream();
 
         //Convert strings to upper/lowercase using streams
-        //convertStream();
+        convertStream();
 
         //Write a Java program to calculate the sum of all even, odd numbers in a list using streams
         pairImpairStream();
+        pairImpairStream2();
 
+        //Remove duplicates from list using streams
+        removeDuplicate();
+
+    }
+
+    private static void removeDuplicate() {
+        List<String> list = List.of("a", "e", "a", "a", "e", "f", "g", "h");
+
+        List<String> withoutDuplicate = list.stream().distinct().toList();
+
+        System.out.println(withoutDuplicate);
+
+    }
+
+    private static void pairImpairStream2() {
+        List < Integer > numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        // Sum of even numbers
+        int sumOfEvens = numbers.stream()
+                .filter(num -> num % 2 == 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+
+        System.out.println("Sum of even numbers: " + sumOfEvens);
+
+        // Sum of odd numbers
+        int sumOfOdds = numbers.stream()
+                .filter(num -> num % 2 != 0)
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     private static void pairImpairStream() {
