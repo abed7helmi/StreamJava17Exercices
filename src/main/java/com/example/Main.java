@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -10,8 +11,21 @@ public class Main {
         //averageStream();
 
         //Convert strings to upper/lowercase using streams
-        convertStream();
+        //convertStream();
 
+        //Write a Java program to calculate the sum of all even, odd numbers in a list using streams
+        pairImpairStream();
+
+    }
+
+    private static void pairImpairStream() {
+        List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Function<Integer,String> maFunction = x -> {
+            return ( x % 2 ==0) ? "Pair" : "Impair";
+        };
+        var maListe =  list.stream().collect(Collectors.groupingBy(maFunction,Collectors.summingInt(Integer::intValue)));
+        System.out.println(maListe.get("Impair"));
+        System.out.println(maListe.get("Pair"));
     }
 
     private static void convertStream() {
