@@ -1,36 +1,66 @@
 package com.example;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
-//        //Write a Java program to calculate the average of a list of integers using streams.
-//        averageStream();
-//
-//        //Convert strings to upper/lowercase using streams
-//        convertStream();
-//
-//        //Write a Java program to calculate the sum of all even, odd numbers in a list using streams
-//        pairImpairStream();
-//        pairImpairStream2();
-//
-//        //Remove duplicates from list using streams
-//        removeDuplicate();
-//
-//        //Count strings starting with letter using streams
-//        startWithStream('a');
-//
-//        //Write a Java program to sort a list of strings in alphabetical order, ascending and descending using streams.
-//        asortStream();
+        //Write a Java program to calculate the average of a list of integers using streams.
+        averageStream();
+
+        //Convert strings to upper/lowercase using streams
+        convertStream();
+
+        //Write a Java program to calculate the sum of all even, odd numbers in a list using streams
+        pairImpairStream();
+        pairImpairStream2();
+
+        //Remove duplicates from list using streams
+        removeDuplicate();
+
+        //Count strings starting with letter using streams
+        startWithStream('a');
+
+        //Write a Java program to sort a list of strings in alphabetical order, ascending and descending using streams.
+        asortStream();
 
         //Write a Java program to find the maximum and minimum values in a list of integers using streams.
         maxMinStream();
 
-        //secondma
+        //Write a Java program to find the second smallest and largest elements in a list of integers using streams.
+        secondMaxMinStream();
 
+    }
+
+    private static void secondMaxMinStream() {
+        List<Integer> list = List.of(4,-54,654,1,0,25,12);
+
+        var max = list.stream().sorted().skip(1).limit(1).toList();
+        var min = list.stream().sorted(Comparator.reverseOrder()).skip(1).limit(1).toList();
+
+        // ou miex
+
+        Integer secondSmallest = list.stream()
+                .distinct()
+                .sorted()
+                .skip(1)
+                .findFirst()
+                .orElse(null);
+
+        // Find the second largest element
+        Integer secondLargest = list.stream()
+                .distinct()
+                .sorted((a, b) -> Integer.compare(b, a))
+                .skip(1)
+                .findFirst()
+                .orElse(null);
+
+        System.out.println(max.get(0));
+        System.out.println(min.get(0));
     }
 
     private static void maxMinStream() {
