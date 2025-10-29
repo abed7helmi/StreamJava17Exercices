@@ -20,6 +20,18 @@ public class Main {
         //Remove duplicates from list using streams
         removeDuplicate();
 
+        //Count strings starting with letter using streams
+        startWithStream('a');
+
+    }
+
+    private static void startWithStream(final char a) {
+        List<String> list = List.of("azze", "ea", "az", "qa", "e", "zf", "agd", "h");
+
+        long sum = list.stream().filter(s ->
+            s.startsWith(String.valueOf(a))
+        ).count();
+        System.out.println(sum);
     }
 
     private static void removeDuplicate() {
