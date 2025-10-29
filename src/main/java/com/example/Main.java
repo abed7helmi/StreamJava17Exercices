@@ -7,22 +7,68 @@ import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
-        //Write a Java program to calculate the average of a list of integers using streams.
-        averageStream();
+//        //Write a Java program to calculate the average of a list of integers using streams.
+//        averageStream();
+//
+//        //Convert strings to upper/lowercase using streams
+//        convertStream();
+//
+//        //Write a Java program to calculate the sum of all even, odd numbers in a list using streams
+//        pairImpairStream();
+//        pairImpairStream2();
+//
+//        //Remove duplicates from list using streams
+//        removeDuplicate();
+//
+//        //Count strings starting with letter using streams
+//        startWithStream('a');
+//
+//        //Write a Java program to sort a list of strings in alphabetical order, ascending and descending using streams.
+//        asortStream();
 
-        //Convert strings to upper/lowercase using streams
-        convertStream();
+        //Write a Java program to find the maximum and minimum values in a list of integers using streams.
+        maxMinStream();
 
-        //Write a Java program to calculate the sum of all even, odd numbers in a list using streams
-        pairImpairStream();
-        pairImpairStream2();
+        //secondma
 
-        //Remove duplicates from list using streams
-        removeDuplicate();
+    }
 
-        //Count strings starting with letter using streams
-        startWithStream('a');
+    private static void maxMinStream() {
 
+         List<Integer> list = List.of(4,54,654,1,0,25,12);
+
+         OptionalInt x = list.stream().mapToInt(Integer::intValue).max();
+         var min = list.stream().mapToInt(Integer::intValue).min();
+
+         //ou
+
+        Integer x2 = list.stream().max(Comparator.naturalOrder()).get();
+        Integer min2 = list.stream().min(Comparator.naturalOrder()).get();
+
+        // ou
+
+        Integer max_val = list.stream()
+                .max(Integer::compareTo)
+                .orElse(null);
+
+        // Find the minimum value
+        Integer min_val = list.stream()
+                .min(Integer::compare)
+                .orElse(null);
+
+        System.out.println(x + " " +min);
+        System.out.println(x2 + " " +min2);
+
+    }
+
+    private static void asortStream() {
+        List<String> list = List.of("azze", "ea", "az","bb", "qa", "e","cc", "zf", "agd", "h");
+
+
+        List<String> sorted1 = list.stream().sorted().toList();
+        List<String> sorted2 = list.stream().sorted(Comparator.reverseOrder()).toList();
+        System.out.println(sorted1);
+        System.out.println(sorted2);
     }
 
     private static void startWithStream(final char a) {
